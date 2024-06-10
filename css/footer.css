@@ -1,0 +1,137 @@
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+}
+
+
+
+footer {
+        background-color: black;
+        color: white;
+
+}
+
+
+
+
+.footerContainer {
+        margin: 30px 200px;
+        display: flex;
+        justify-content: space-around;
+}
+
+
+.links {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+}
+
+
+.links h3 {
+        text-transform: uppercase;
+        font-weight: bold;
+}
+
+.links a {
+        text-decoration: none;
+        text-transform: uppercase;
+        margin: 3px 0;
+        font-weight: 600;
+        color: rgb(79, 12, 68)s;
+}
+
+
+
+footer h3 {
+        text-align: center;
+        padding: 20px 0;
+        text-transform: uppercase;
+}
+
+
+
+.socialIcons i {
+        margin: 30px 20px;
+        border: 0.3px solid gray;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: rgb(48, 67, 116);
+}
+
+
+
+
+
+
+@media only screen and (max-width: 680px) {
+
+        .footerContainer {
+                margin: 30px 10px;
+                display: flex;
+                justify-content: space-around;
+        }
+
+        .socialIcons h3 {
+                text-transform: uppercase;
+                font-weight: bold;
+                font-size: 12px;
+        }
+
+        .socialIcons i {
+                margin: 10px 5px;
+                border: 0.3px solid gray;
+                padding: 10px;
+                border-radius: 10px;
+                background-color: rgb(48, 67, 116);
+        }
+
+        .links h3 {
+                text-transform: uppercase;
+                font-weight: bold;
+                font-size: 12px;
+        }
+
+        .links a {
+                text-decoration: none;
+                text-transform: uppercase;
+                margin: 3px 0;
+                font-weight: 600;
+                color: rgb(79, 12, 68)s;
+                font-size: 10px;
+        }
+
+        .socialIcons h3 {
+                text-transform: uppercase;
+                font-weight: bold;
+                font-size: 12px;
+        }
+
+       
+
+
+
+}
+
+
+
+@media only screen and (min-width: 681px) and (max-width: 1099px) {
+
+
+        .footerContainer {
+                margin: 30px 50px;
+                display: flex;
+                justify-content: space-around;
+        }
+
+        .socialIcons i {
+                margin: 15px 5px;
+                border: 0.3px solid gray;
+                padding: 10px;
+                border-radius: 10px;
+                background-color: rgb(48, 67, 116);
+        }
+
+
+}

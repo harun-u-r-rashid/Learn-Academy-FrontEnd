@@ -1,0 +1,135 @@
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+}
+
+
+
+/* .coursePlanning {} */
+
+.coursePlanning h3 {
+        margin: 20px 0;
+
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        color: rgb(195, 56, 56);
+        letter-spacing: 2px;
+        text-transform: uppercase
+}
+
+
+
+.planningContainer {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin-left: 200px;
+        margin-right: 200px;
+        align-items: center;
+}
+
+.planCard {
+        padding: 5px;
+}
+
+.image {
+        width: 300px;
+        height: 250px;
+
+}
+
+.image img {
+        width: 100%;
+        height: 100%;
+        opacity: 0.9;
+        transition: 0.5s;
+
+}
+
+.image img:hover {
+        opacity: 1;
+}
+
+.planDetails {
+        width: 300px;
+        height: 300px;
+        margin-bottom: 50px;
+
+}
+
+.planCard h2 {
+        text-transform: uppercase;
+        text-align: center;
+        margin: 5px 0 5px 0;
+        font-weight: bold;
+}
+
+.planCard p {
+        text-align: center;
+        font-size: 15px;
+        padding: 5px;
+}
+
+.planCard h1 {
+        border-top: 1px dashed gray;
+        border-bottom: 1px dashed gray;
+        margin: 10px 20px;
+        text-align: center;
+        color: brown;
+        font-weight: 600;
+}
+
+
+.planCard a {
+        text-decoration: none;
+        border: 1px solid rgba(255, 0, 0, 0.283);
+        border-radius: 3px;
+        padding: 3px 5px;
+        display: inline-block;
+        margin: 10px 0 0 15px;
+        background-color: black;
+        color: white;
+        font-weight: bold;
+        transition: 0.5s;
+}
+
+.planCard a:hover {
+        background-color: rgba(128, 128, 128, 0.38);
+        color: black;
+}
+
+
+
+@media only screen and (max-width: 680px) {
+
+        .planningContainer {
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                margin-left: 20px;
+                margin-right: 20px;
+                grid-gap: 20px;
+
+        }
+
+
+
+
+}
+
+
+
+@media only screen and (min-width: 681px) and (max-width: 1099px) {
+
+        .planningContainer {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                margin-left: 100px;
+                margin-right: 100px;
+                grid-gap: 20px;
+
+        }
+
+
+
+}

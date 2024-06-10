@@ -1,0 +1,122 @@
+* {
+        margin: 0;
+        padding: 0;
+}
+
+header {
+        background-image: url('../images/background.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 50vh;
+        margin-top: 10px;
+        margin-left: 200px;
+        margin-right: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        text-align: center;
+}
+
+
+.headerTitle {
+        background-color: rgba(128, 128, 128, 0.059);
+        padding: 10px;
+        border-radius: 10px 5px 10px 5px;
+
+}
+
+.headerTitle h3 {
+        font-size: 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+        padding: 10px 20px;
+        border-radius: 5px;
+        letter-spacing: 2px;
+        color: rgb(234, 226, 226);
+}
+
+.headerTitle span {
+        color: yellow;
+}
+
+.headerTitle p {
+        font-size: 18px;
+        color: #ffffff;
+        margin-left: 300px;
+        margin-right: 300px;
+       
+}
+
+.headerTitle a {
+        text-decoration: none;
+        border: 1px solid rgba(255, 0, 0, 0.283);
+        border-radius: 3px;
+        padding: 5px 10px;
+        display: inline-block;
+        margin: 20px auto;
+        background-color: black;
+        color: white;
+        font-weight: bold;
+        transition: 0.5s;
+}
+
+.headerTitle a:hover {
+        background-color: white;
+        color: black;
+}
+
+
+
+@media only screen and (max-width: 680px) {
+
+        header {
+                margin-left: 20px;
+                margin-right: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 10px;
+                text-align: center;
+                height: 50vh;
+                
+        }
+        .headerTitle p {
+                font-size: 18px;
+                color: #ffffff;
+                margin-left: 10px;
+                margin-right: 10px;
+               
+        }
+
+
+
+}
+
+
+
+@media only screen and (min-width: 681px) and (max-width: 1099px) {
+        header {
+                margin-left: 20px;
+                margin-right: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 10px;
+                text-align: center;
+                height: 50vh;
+                
+        }
+
+        .headerTitle p {
+                font-size: 18px;
+                color: #ffffff;
+                margin-left: 30px;
+                margin-right: 30px;
+               
+        }
+
+
+
+}

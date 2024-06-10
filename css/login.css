@@ -1,0 +1,193 @@
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+}
+
+body {
+        font-family: Arial, sans-serif;
+}
+
+.loginSection {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+}
+
+.loginMain {
+        width: 100%;
+        max-width: 600px;
+        padding: 20px;
+        border: 0.5px solid rgba(128, 128, 128, 0.248);
+}
+
+.loginContainer {
+        width: 100%;
+        padding: 20px;
+}
+
+.companyName {
+        width: 100px;
+        margin: 0 auto;
+        text-align: center;
+}
+
+.companyName img {
+        max-width: 100%;
+}
+
+.input {
+        margin: 10px 0;
+}
+
+.input input {
+        width: 100%;
+        border: 1px solid rgba(128, 128, 128, 0.657);
+        border-radius: 3px;
+        height: 40px;
+        background-color: #8080802e;
+        font-size: 14px;
+        padding: 0 10px;
+}
+
+.loginBtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0;
+}
+
+.loginBtn button {
+        width: 100%;
+        padding: 10px;
+        font-size: 15px;
+        font-weight: bold;
+        color: white;
+        background-color: rgb(76, 181, 249);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+}
+
+.orTitle {
+        width: 100%;
+        text-align: center;
+        margin: 20px 0;
+}
+
+.orTitle h3 {
+        margin: 0;
+}
+
+.socialContainer {
+        margin: 20px 0;
+        text-align: center;
+}
+
+.socialContent {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+}
+
+.loginIcon i {
+        color: #385185;
+        font-size: 20px;
+}
+
+.loginTitle h3 {
+        font-size: 15px;
+        color: #385185;
+        margin: 0;
+        font-weight: 500;
+}
+
+.resetPassword {
+        text-align: center;
+        margin: 20px 0;
+}
+
+.resetPassword a {
+        font-size: 14px;
+        color: #385185;
+        text-decoration: none;
+}
+
+.haveAccount {
+        width: 100%;
+        max-width: 600px;
+        padding: 20px;
+        border: 0.5px solid #8080803f;
+        margin-top: 20px;
+}
+
+
+.haveAccount p {
+        font-size: 15px;
+        text-align: center;
+}
+
+.haveAccount a {
+        text-decoration: none;
+        color: rgb(15, 59, 116);
+        font-weight: 600;
+}
+
+@media only screen and (max-width: 680px) {
+
+        .loginMain,
+        .haveAccount {
+                margin: 08 10px;
+                border: 0.5px solid rgba(128, 128, 128, 0.248);
+        }
+
+        .loginContainer {
+                margin: 0 10px;
+        }
+
+        .input input {
+                height: 30px;
+                font-size: 12px;
+        }
+
+        .loginBtn button {
+                padding: 5px;
+                font-size: 14px;
+        }
+}
+
+@media only screen and (min-width: 681px) and (max-width: 1099px) {
+
+        .loginMain,
+        .haveAccount {
+                margin: 10px 50px;
+        }
+
+        .loginContainer {
+                margin: 0 20px;
+        }
+
+        .input {
+                margin: 10px 0;
+        }
+
+        .loginBtn button {
+                padding: 10px;
+                font-size: 15px;
+        }
+
+        .orTitle {
+                width: 100%;
+        }
+
+        .socialContainer {
+                margin: 20px 0;
+        }
+
+        .resetPassword {
+                margin: 20px 0;
+        }
+}

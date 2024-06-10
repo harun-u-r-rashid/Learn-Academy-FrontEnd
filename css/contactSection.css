@@ -1,0 +1,99 @@
+.contactSection{
+    background-color: rgba(250, 235, 215, 0.404);
+    padding: 40px 0;
+    color: black;
+    height: auto;
+    min-height: 80vh;
+}
+
+
+.contactSection h3{
+    text-align: center;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+
+
+}
+
+.contactContainer{
+    margin: 0 200px;
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+   
+    
+}
+
+.formContainer form{
+    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.formContainer form input{
+    width: 400px;
+    height: 50px;
+    margin: 10px;
+   border-radius: 2px;
+}
+
+.formContainer form textarea{
+    width: 400px;
+    height: 100px;
+    margin: 10px;
+    border-radius: 2px;
+}
+
+.formContainer form .button{
+    width: 400px;
+    height: 40px;
+    margin-top: 20px;
+    background-color: black;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    border-radius: 2px;
+}
+
+.mapContainer{
+    margin: 80px 0;
+    border: none;
+}
+
+.contactInformation{
+    display: flex;
+    justify-content: center;
+    margin: 0 200px;
+    gap: 100px;
+}
+
+
+.information{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #80808015;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+
+.information:hover{
+    background-color: #6a084453;
+}
+
+.information i{
+    font-size: 30px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+
+.information h2{
+    font-size: 20px;
+    letter-spacing: 1px;
+    
+}
