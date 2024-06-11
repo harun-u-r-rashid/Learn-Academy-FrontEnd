@@ -27,7 +27,73 @@
         <!-- fontaewesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+<style>
+.updateCourseSection {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    margin: 50px auto;
+}
 
+
+.updateCourseSection form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.updateCourseSection input[type="text"],
+.updateCourseSection input[type="number"],
+.updateCourseSection input[type="file"],
+.updateCourseSection textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.updateCourseSection button[type="submit"] {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.updateCourseSection button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+@media (max-width: 600px) {
+    .updateCourseSection {
+        padding: 15px;
+    }
+
+    .updateCourseSection input[type="text"],
+    .updateCourseSection input[type="number"],
+    .updateCourseSection input[type="file"],
+    .updateCourseSection textarea {
+        font-size: 14px;
+    }
+
+    .updateCourseSection button[type="submit"] {
+        font-size: 14px;
+    }
+}
+       
+</style>
 <body>
 
         <nav class="bg-white border-gray-200 dark:bg-gray-900">
@@ -125,7 +191,7 @@
         </nav>
 
 
-        <section class="addCourseSection">
+        <section class="updateCourseSection">
                 <form onsubmit="updateCourse(event)" id="course-form" enctype="multipart/form-data">
                     <input type="text" id="updateTitle" name="title" placeholder="Course Title" required><br>
                     <textarea id="updateDescription" name="description" placeholder="Course Description" required></textarea><br>
