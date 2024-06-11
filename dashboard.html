@@ -20,78 +20,105 @@
         <!-- tailwind -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
 
-
+        <!-- Sweet alert -->
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
+        </link>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
         <!-- fontaewesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <style>
-  
-.dashBoardSection, section {
-    padding: 20px;
-    margin: 20px auto;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    max-width: 800px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .dashBoardSection {
+                padding: 20px;
+                margin: 50px auto;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                background-color: #f9f9f9;
+                max-width: 800px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #dashUserDetails {
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                padding: 15px;
+                background-color: #fff;
+                box-shadow: 0 0 5px #0000001a;
+        }
+
+
+        .detailsContainer {
+                padding: 30px;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+
+        }
+
+
+        .detailsContainer h1 {
+                font-size: 15px;
+
+                font-weight: 500;
+        }
+
+        .detailsContainer span {
+                font-size: 16px;
+                font-weight: 600;
+        }
+
+        .courseBtn {
+                width: 100px;
+                display: inline-block;
+                border: 1px solid rgba(255, 0, 0, 0.233);
+                padding: 5px 10px;
+                margin-top: 20px;
+                border-radius: 5px;
+                background-color: black;
+                color: white;
+                cursor: pointer;
+                transition: 0.5s;
+                font-size: 13px;
+                font-weight: bold;
+                text-align: center;
+                text-transform: uppercase;
+        }
+
+        .courseBtn:hover {
+                background-color: white;
+                color: black;
+        }
+
+        @media only screen and (max-width: 460px) {
+
+                .detailsContainer {
+                padding: 10px 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+
+        }
+        .detailsContainer h1 {
+                font-size: 12px;
+                font-weight: 550;
+        }
+
+        .detailsContainer span {
+                font-size: 13px;
+                font-weight: 600;
+        }
+
+        .courseBtn {
+               width: 80px;
+                font-size: 10px;
+                font-weight: bold;
+                text-align: center;
+                text-transform: uppercase;
+        }
+
 }
 
-
-#studentDetails {
-    margin-bottom: 20px;
-}
-
-
-#instructorDetails .userInfo {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 15px;
-    background-color: #fff;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-
-.userNameContainer {
-    margin-bottom: 10px;
-}
-
-
-.userName {
-    margin-bottom: 10px;
-    font-size: 16px;
-    color: #333;
-}
-
-.userName h1 {
-    font-size: 18px;
-    margin: 0;
-}
-
-.userName span {
-    font-weight: normal;
-    color: #555;
-}
-
-.userInfo .courseBtn{
-        display: inline-block;
-        border: 1px solid rgba(255, 0, 0, 0.233);
-        padding: 5px 10px;
-        margin-top: 20px;
-        border-radius: 5px;
-        background-color: black;
-        color: white;
-        cursor: pointer;
-        transition: 0.5s;
-        font-size: 15px;
-        font-weight: bold;
-}
-
-.userInfo .courseBtn:hover{
-        background-color: white;
-        color: black;
-}
 
 </style>
 
@@ -110,9 +137,8 @@
                                         id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                                         data-dropdown-placement="bottom">
                                         <span class="sr-only">Open user menu</span>
-                                      
-                                        <img class="w-8 h-8 rounded-full"
-                                                src="" alt="">
+
+                                        <img class="w-8 h-8 rounded-full" src="" alt="">
                                 </button>
                                 <!-- Dropdown menu -->
                                 <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
@@ -194,34 +220,29 @@
 
 
         <section class="dashBoardSection">
-                <div id="studentDetails">
+                <div id="dashUserDetails">
 
                 </div>
         </section>
 
 
-
-        <section>
-                
-                <div id="instructorDetails">
-                        
-
-                </div>
-       
-        </section>
-
-        
 
 
         <!-- tailwind -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-       
+
         <!-- passive -->
         <script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>
+        <!-- Sweet alert -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
 
         <!-- Internal js -->
         <script src="js/app.js"></script>
         <script src="js/auth.js"></script>
+        <script src="js/course.js"></script>
+        <script src="js/dom.js"></script>
 </body>
 
 </html>

@@ -83,13 +83,14 @@
 
 .planCard a {
         text-decoration: none;
-        border: 1px solid rgba(255, 0, 0, 0.283);
+        border: 1px solid #71585848;
         border-radius: 3px;
         padding: 3px 5px;
         display: inline-block;
         margin: 10px 0 0 15px;
         background-color: black;
         color: white;
+        font-size: 15px;
         font-weight: bold;
         transition: 0.5s;
 }
@@ -100,7 +101,38 @@
 }
 
 
+.planCard #removeBtn{
+        text-decoration: none;
+        border: 1px solid #a08b8b48;
+        border-radius: 3px;
+        padding: 3px 5px;
+        display: inline-block;
+        margin: 10px 0 0 15px;
+        background-color: #ff050595;
+        color: rgb(35, 25, 25);
+        font-weight: bold;
+        transition: 0.5s;   
+        font-size: 15px;
+        font-weight: bold;
+}
+.planCard #updateBtn{
+        text-decoration: none;
+        border: 1px solid #a08b8b48;
+        border-radius: 3px;
+        padding: 3px 5px;
+        display: inline-block;
+        margin: 10px 0 0 15px;
+        background-color: #465f8a87;
+        color: rgb(35, 25, 25);
+        font-weight: bold;
+        transition: 0.5s;   
+        font-size: 15px;
+        font-weight: bold;      
+}
+.planCard #updateBtn:hover, #removeBtn:hover{
+        background-color: white;
 
+}
 @media only screen and (max-width: 680px) {
 
         .planningContainer {
@@ -111,9 +143,6 @@
                 grid-gap: 20px;
 
         }
-
-
-
 
 }
 

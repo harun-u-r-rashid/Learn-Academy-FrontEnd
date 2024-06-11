@@ -48,18 +48,28 @@ const handleRegistration = (event) => {
                         })
                                 .then((res) => res.json())
                                 .then((data) => console.log(data));
-                        document.getElementById("error").innerText = `
-                                check your email
-                                `;
+                                Swal.fire({
+                                        icon: "success",
+                                        title: "Successful!",
+                                        text: "Check your email",
+                                        showConfirmButton: true,
+                                });
                         window.location.href = "emailCheck.html";
                 } else {
-                        document.getElementById("error").innerText =
-                                "pass must contain eight characters, at least one letter, one number and one special character:";
+                        Swal.fire({
+                                icon: "error",
+                                title: "Failed!",
+                                text: "Password must be eight characters!",
+                                showConfirmButton: true,
+                        });
                 }
         } else {
-                document.getElementById("error").innerText =
-                        "password and confirm password do not match";
-                alert("password and confirm password do not match");
+                Swal.fire({
+                        icon: "error",
+                        title: "Failed!",
+                        text: "Password and confirm password must be similiar!",
+                        showConfirmButton: true,
+                });
         }
 };
 
@@ -110,7 +120,7 @@ const handlaResetPasswordForm = (event) => {
                         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(
                                 password
                         )
-                ){
+                ) {
                         console.log(info);
 
                         fetch(``)
@@ -121,8 +131,11 @@ const handlaResetPasswordForm = (event) => {
 }
 
 
+
+
 const handleLogin = (event) => {
         event.preventDefault();
+
         const username = getValue("login-username");
         const password = getValue("login-password");
         if ((username, password)) {
@@ -141,8 +154,23 @@ const handleLogin = (event) => {
                                         localStorage.setItem("user_id", data.user_id);
                                         localStorage.setItem("role", data.role);
                                         window.location.href = "index.html";
+                                        Swal.fire({
+                                                icon: "success",
+                                                title: "Login Successful!",
+                                                text: "Welcome Learn Academy",
+                                                showConfirmButton: true,
+                                        });
+
                                 }
                         });
+        }
+        else{
+                Swal.fire({
+                        icon: "error",
+                        title: "Failed attempted!",
+                        text: "Invalid credential.",
+                        showConfirmButton: true,
+                });
         }
 };
 
@@ -167,10 +195,18 @@ const handleLogout = () => {
                         localStorage.removeItem("token");
                         localStorage.removeItem("user_id");
                         localStorage.removeItem("role");
+                      
                         window.location.href = "index.html";
+                        // Swal.fire({
+                        //         icon: "success",
+                        //         title: "Successfully Logged out!",
+                        //         text: "",
+                        //         showConfirmButton: true,
+                        // });
                 });
 
 };
+
 
 
 
@@ -213,102 +249,94 @@ const userDetails = () => {
 userDetails();
 
 
-// If user is student it will display student information
-const studentDetails = () => {
-        const user_id = localStorage.getItem("user_id");
-        fetch(`http://127.0.0.1:8000/user/list/${user_id}`)
-                .then((res) => res.json())
-                .then((data) => {
-                        if (data.is_active && data.role == "STUDENT") {
-                                const parent = document.getElementById("studentDetails");
-                                const div = document.createElement("div");
-                                div.classList.add("userInfo");
-                                div.innerHTML = `
-                    <div class="userNameContainer">
-        
-                    <div  class="userName">
-                    <h1>User Id: <span>${data.id}</span></h1>
-                    </div>
-        
-                    <div class="userName">
-                    <h1>User Name: <span>${data.username}</span></h1>
-                    </div> 
-        
-                    <div class="userName">
-                    <h1>Full Name: <span>${data.first_name} ${data.last_name}</span></h1>
-                    </div> 
-        
-                    <div class="userName">
-                    <h1>Email: <span>${data.email}</span></h1>
-                    </div> 
+// // If user is student it will display student information
+// const studentDetails = () => {
+//         const user_id = localStorage.getItem("user_id");
+//         fetch(`http://127.0.0.1:8000/user/list/${user_id}`)
+//                 .then((res) => res.json())
+//                 .then((data) => {
+//                         if (data.is_active && data.role == "STUDENT") {
+//                                 const parent = document.getElementById("studentDetails");
+//                                 const div = document.createElement("div");
+//                                 div.classList.add("userInfo");
+//                                 div.innerHTML = `
+//                     <div class="userNameContainer">
 
-                    <div class="userName">
-                    <h1>Email: <span>${data.role}</span></h1>
-                    </div> 
-                   
-                        
-        
-                    </div>
-                    `;
-                                parent.appendChild(div);
-                        }
+//                     <div  class="userName">
+//                     <h1>User Id: <span>${data.id}</span></h1>
+//                     </div>
 
-                })
+//                     <div class="userName">
+//                     <h1>User Name: <span>${data.username}</span></h1>
+//                     </div> 
 
-};
+//                     <div class="userName">
+//                     <h1>Full Name: <span>${data.first_name} ${data.last_name}</span></h1>
+//                     </div> 
 
-studentDetails();
+//                     <div class="userName">
+//                     <h1>Email: <span>${data.email}</span></h1>
+//                     </div> 
+
+//                     <div class="userName">
+//                     <h1>Email: <span>${data.role}</span></h1>
+//                     </div> 
+
+
+
+//                     </div>
+//                     `;
+//                                 parent.appendChild(div);
+//                         }
+
+//                 })
+
+// };
+
+// studentDetails();
 
 
 
 // If user is instructor it will show instructor details
 
-const instructorDetails = () => {
+const dashUserDetails = () => {
         const user_id = localStorage.getItem("user_id");
         fetch(`http://127.0.0.1:8000/user/list/${user_id}`)
                 .then((res) => res.json())
                 .then((data) => {
-                        // console.log(data);
-                        if (data.is_admin && data.role === "INSTRUCTOR") {
-
-                                const parent = document.getElementById("instructorDetails");
-                                const div = document.createElement("div");
-                                div.classList.add("userInfo");
-                                div.innerHTML = `
-                    <div class="userNameContainer">
-        
-        
-                    <div class="userName">
-                    <h1>User Name: <span>${data.username}</span></h1>
-                    </div> 
-        
-                    <div class="userName">
-                    <h1>Full Name: <span>${data.first_name} ${data.last_name}</span></h1>
-                    </div> 
-        
-                    <div class="userName">
-                    <h1>Email: <span>${data.email}</span></h1>
-                    </div> 
-
-                    <div class="userName">
-                    <h1>Email: <span>${data.role}</span></h1>
-                    </div> 
-
-                    <h1>This is instructor details</h1>
-
-                      <a class="courseBtn" href="addCourse.html">Course Add</a>
-                   
-                    </div>
-                    `;
-                                parent.appendChild(div);
+                        const isAdmin = data.is_admin && data.role === 'INSTRUCTOR';
+                        const parent = document.getElementById("dashUserDetails");
+                        const div = document.createElement("div");
+                        div.classList.add("userInfo");
+                        let addCourseBtn = "";
+                        if (isAdmin) {
+                                addCourseBtn = `
+                                <a class="courseBtn" href="addCourse.html">Course<sup>+</sup></a>
+                                `
                         }
+                        div.innerHTML = `
+
+                        
+                        <div class="detailsContainer">
+                  
+                        <h1>User Name: <span>${data.username}</span></h1>
+                        <h1>Full Name: <span>${data.first_name} ${data.last_name}</span></h1>
+                        <h1>Email: <span>${data.email}</span></h1>
+                      
+                        <h1>Role: <span>${data.role}</span></h1>
+                      
+                        ${addCourseBtn} 
+                         
+                        </div>
+                        `;
+                        parent.appendChild(div);
+                    
 
                 })
 
 };
 
-instructorDetails();
-
+dashUserDetails();
 
 
 
@@ -328,84 +356,24 @@ const handleContact = (event) => {
 
                 .then((res) => res.json())
                 .then((data) => {
-                        console.log(data);
-                        alert("Thanks for contacting with us!")
+                          Swal.fire({
+                                icon: "success",
+                                title: "Hello ${data.name}!",
+                                text: "Thanks for contacting with us!",
+                                showConfirmButton: true,
+                        });
+                      
                 })
 };
 
 
 
 
-// Add course
-
-    
-const addCourse = (event) => {
-        event.preventDefault();
-        const user_id = localStorage.getItem("user_id");
-        const token = localStorage.getItem("token");
-        const title = document.getElementById("title").value;
-        const description = document.getElementById("description").value;
-        const price = document.getElementById("price").value;
-        const image = document.getElementById("image").files[0]; // Get the file object
-    
-        if (user_id) {
-            fetch(`http://127.0.0.1:8000/user/list/${user_id}`, {
-                headers: {
-                    Authorization: `Token ${token}`,
-                    "Content-Type": "application/json",
-                },
-            })
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.is_admin) {
-                    const formData = new FormData();
-                    formData.append("account", user_id);
-                    formData.append("title", title);
-                    formData.append("description", description);
-                    formData.append("price", price);
-                    formData.append("image", image);
-    
-                    console.log("Request payload:", formData);
-    
-                    fetch(`http://127.0.0.1:8000/user/create/`, {
-                        method: "POST",
-                        headers: {
-                            Authorization: `Token ${token}`,
-                            // "Content-Type": "application/json", // Note: Do not set Content-Type for FormData
-                        },
-                        body: formData,
-                    })
-                    .then((res) => {
-                        if (res.ok) {
-                        //     alert("Course added successfully!");
-                            window.location.href = "plan.html";
-                        } else {
-                            return res.json().then((data) => {
-                                console.log("Server response:", data);
-                                alert("Failed to add course. Check console for details.");
-                            });
-                        }
-                    })
-                    .catch((error) => {
-                        console.error("Error:", error);
-                        alert("An error occurred.");
-                    });
-                } else {
-                    alert("User is not an admin.");
-                }
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-                alert("An error occurred while fetching user details.");
-            });
-        } else {
-            alert("User ID not found.");
-        }
-    };
 
 
 
 
 
 
-    
+
+
