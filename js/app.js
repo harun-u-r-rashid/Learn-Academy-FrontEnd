@@ -3,7 +3,7 @@
 const loadInstructor = (search) => {
         document.getElementById("instructors").innerHTML = "";
         // http://127.0.0.1:8000/instructor/list/
-        fetch(`http://127.0.0.1:8000/instructor/list/?search=${search ? search : ""
+        fetch(`https://learn-academy.onrender.com/instructor/list/?search=${search ? search : ""
                 }`)
                 .then((res) => res.json())
                 .then((data) => {

@@ -55,7 +55,7 @@
 
 
 const loadCourse = (search) => {
-        fetch(`http://127.0.0.1:8000/user/course/list/?search=${search ? search : ""}`)
+        fetch(`https://learn-academy.onrender.com/user/course/list/?search=${search ? search : ""}`)
                 .then((res) => res.json())
                 .then((data) => {
                         displayCourse(data);
@@ -70,7 +70,7 @@ const displayCourse = (courses) => {
         const token = localStorage.getItem("token");
 
         if (user_id) {
-                fetch(`http://127.0.0.1:8000/user/list/${user_id}`, {
+                fetch(`https://learn-academy.onrender.com/user/list/${user_id}`, {
                         headers: {
                                 Authorization: `Token ${token}`,
                                 "Content-Type": "application/json",
@@ -136,7 +136,7 @@ const addCourse = (event) => {
         const image = document.getElementById("image").files[0];
 
         if (user_id) {
-                fetch(`http://127.0.0.1:8000/user/list/${user_id}`, {
+                fetch(`https://learn-academy.onrender.com/user/list/${user_id}`, {
                         headers: {
                                 Authorization: `Token ${token}`,
                                 "Content-Type": "application/json",
@@ -154,7 +154,7 @@ const addCourse = (event) => {
 
                                         console.log("Request payload:", formData);
 
-                                        fetch(`http://127.0.0.1:8000/user/create/`, {
+                                        fetch(`https://learn-academy.onrender.com/user/create/`, {
                                                 method: "POST",
                                                 headers: {
                                                         Authorization: `Token ${token}`,
@@ -206,7 +206,7 @@ const removeCourse = (courseId) => {
         const token = localStorage.getItem("token");
 
         if (user_id) {
-                fetch(`http://127.0.0.1:8000/user/list/${user_id}`, {
+                fetch(`https://learn-academy.onrender.com/user/list/${user_id}`, {
                         headers: {
                                 Authorization: `Token ${token}`,
                                 "Content-Type": "application/json",
@@ -216,7 +216,7 @@ const removeCourse = (courseId) => {
                         .then((data) => {
                                 if (data.is_admin) {
 
-                                        fetch(`http://127.0.0.1:8000/user/${courseId}/delete/`, {
+                                        fetch(`https://learn-academy.onrender.com/user/${courseId}/delete/`, {
                                                 method: 'DELETE'
                                         })
 
@@ -266,7 +266,7 @@ const updateCourse = (event) => {
         const image = document.getElementById("updateImage").files[0]; // Get the file object
 
         if (user_id) {
-                fetch(`http://127.0.0.1:8000/user/list/${user_id}`, {
+                fetch(`https://learn-academy.onrender.com/user/list/${user_id}`, {
                         headers: {
                                 Authorization: `Token ${token}`,
                                 "Content-Type": "application/json",
@@ -291,7 +291,7 @@ const updateCourse = (event) => {
 
                                         console.log("Request payload:", formData);
 
-                                        fetch(`http://127.0.0.1:8000/user/${courseId}/update/`, {
+                                        fetch(`https://learn-academy.onrender.com/user/${courseId}/update/`, {
                                                 method: "PUT",
                                                 headers: {
                                                         Authorization: `Token ${token}`,

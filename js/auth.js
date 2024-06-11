@@ -41,7 +41,7 @@ const handleRegistration = (event) => {
                 ) {
                         // console.log(info);
                         // http://127.0.0.1:8000/user/register/
-                        fetch("http://127.0.0.1:8000/user/register/", {
+                        fetch("https://learn-academy.onrender.com/user/register/", {
                                 method: "POST",
                                 headers: { "content-type": "application/json" },
                                 body: JSON.stringify(info),
@@ -80,7 +80,7 @@ const handleResetPassword = (event) => {
 
         const email = getValue("resetEmail");
 
-        fetch("http://127.0.0.1:8000/user/reset/", {
+        fetch("https://learn-academy.onrender.com/user/reset/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email: email }),
@@ -141,7 +141,7 @@ const handleLogin = (event) => {
         if ((username, password)) {
 
                 // http://127.0.0.1:8000/user/login/
-                fetch("http://127.0.0.1:8000/user/login/", {
+                fetch("https://learn-academy.onrender.com/user/login/", {
                         method: "POST",
                         headers: { "content-type": "application/json" },
                         body: JSON.stringify({ username, password }),
@@ -181,7 +181,7 @@ const handleLogout = () => {
         // event.preventDefault();
         const token = localStorage.getItem('token');
         // http://127.0.0.1:8000/user/logout/
-        fetch("http://127.0.0.1:8000/user/logout/", {
+        fetch("https://learn-academy.onrender.com/user/logout/", {
                 method: "POST",
                 headers: {
                         Authorization: `Token ${token}`,
@@ -227,7 +227,7 @@ const userDetails = () => {
         }
 
         else {
-                fetch(`http://127.0.0.1:8000/user/list/${user_id}`)
+                fetch(`https://learn-academy.onrender.com/user/list/${user_id}`)
                         .then((res) => res.json())
                         .then((data) => {
                                 if (data.is_active) {
@@ -301,7 +301,7 @@ userDetails();
 
 const dashUserDetails = () => {
         const user_id = localStorage.getItem("user_id");
-        fetch(`http://127.0.0.1:8000/user/list/${user_id}`)
+        fetch(`https://learn-academy.onrender.com/user/list/${user_id}`)
                 .then((res) => res.json())
                 .then((data) => {
                         const isAdmin = data.is_admin && data.role === 'INSTRUCTOR';
@@ -348,7 +348,7 @@ const handleContact = (event) => {
         const email = getValue("email");
         const query = getValue("textArea");
 
-        fetch(`http://127.0.0.1:8000/user/contact/`, {
+        fetch(`https://learn-academy.onrender.com/user/contact/`, {
                 method: "POST",
                 headers: { "content-type": "application/json" },
                 body: JSON.stringify({ name, email, query }),
