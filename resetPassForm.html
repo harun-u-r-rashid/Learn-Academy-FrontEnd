@@ -4,7 +4,7 @@
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home</title>
+        <title>Reset Password</title>
 
         <!-- Internal css -->
         <link rel="stylesheet" href="css/style.css">
@@ -17,94 +17,19 @@
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/aboutSection.css">
         <link rel="stylesheet" href="css/contactSection.css">
+
+
         <!-- tailwind -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
 
 
         <!-- fontaewesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
 </head>
 
-<style>
-        .addCourseSection {
-                max-width: 600px;
-                margin: 20px auto;
-                padding: 20px;
-                border: 1px solid #ddd;
-                border-radius: 8px;
-                background-color: #fff;
-                box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        }
-
-
-        #course-form {
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-        }
-
-
-        #course-form input[type="text"],
-        #course-form input[type="number"],
-        #course-form input[type="file"],
-        #course-form textarea {
-                width: 100%;
-                padding: 10px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-                font-size: 16px;
-        }
-
-        #course-form input::placeholder,
-        #course-form textarea::placeholder {
-                color: #aaa;
-        }
-
-
-        #course-form textarea {
-                resize: vertical;
-                min-height: 100px;
-        }
-
-
-        #course-form button {
-                padding: 10px 15px;
-                border: none;
-                border-radius: 5px;
-                background-color: #28a745;
-                color: #fff;
-                font-size: 18px;
-                cursor: pointer;
-                transition: background-color 0.3s;
-        }
-
-        #course-form button:hover {
-                background-color: #218838;
-        }
-
-
-        @media (max-width: 600px) {
-                .addCourseSection {
-                        padding: 15px;
-                }
-
-                #course-form input[type="text"],
-                #course-form input[type="number"],
-                #course-form input[type="file"],
-                #course-form textarea {
-                        padding: 8px;
-                        font-size: 14px;
-                }
-
-                #course-form button {
-                        padding: 8px 12px;
-                        font-size: 16px;
-                }
-        }
-</style>
-
 <body>
-
         <nav class="bg-white border-gray-200 dark:bg-gray-900">
                 <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                         <a href="index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -199,21 +124,44 @@
                 </div>
         </nav>
 
-
-        <section class="addCourseSection">
-                <form id="course-form" enctype="multipart/form-data">
-                        <input type="text" id="title" name="title" placeholder="Course Title" required><br>
-                        <textarea id="description" name="description" placeholder="Course Description"
-                                required></textarea><br>
-                        <input type="number" id="price" name="price" placeholder="Course Price" required><br>
-                        <input type="file" id="image" name="image"><br>
-                        <button onclick="addCourse(event)" type="submit">Create Course</button>
+        <main>
+                <h1>Reset Your Password</h1>
+                <form onsubmit="handlaResetPasswordForm(event)" id="reset-password-form">
+                        <input type="password" id="new-password" placeholder="Enter your new password" autocomplete="on" required>
+                        <input type="password" id="confirm-password" placeholder="Confirm your new password" autocomplete="on" required>
+                        <button type="submit">Reset Password</button>
                 </form>
-        </section>
+                <p id="error"></p>
 
+        </main>
+        <footer>
+                <div class="footerContainer">
 
+                        <div class="links">
+                                <h3>Important Link</h3>
 
+                                <a href="index.html">Home</a>
+                                <a href="#">Features</a>
+                                <a href="plan.html">Pricing</a>
+                                <a href="#">About</a>
 
+                        </div>
+
+                        <div class="socialIcons">
+
+                                <h3>Stay touch via social media</h3>
+                                <i class="fa-brands fa-facebook"></i>
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <i class="fa-brands fa-linkedin"></i>
+                                <i class="fa-brands fa-github"></i>
+
+                        </div>
+
+                </div>
+                <hr>
+
+                <h3> copyright || &copy Harunur Rashid</h3>
+        </footer>
 
         <!-- tailwind -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
@@ -225,7 +173,7 @@
         <script src="js/app.js"></script>
         <script src="js/auth.js"></script>
 
-
+      
 
 
 </body>

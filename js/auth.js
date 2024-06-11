@@ -1,5 +1,5 @@
 // http://127.0.0.1:8000/user/
-
+// https://learn-academy.onrender.com/
 
 
 const getValue = (id) => {
@@ -65,12 +65,66 @@ const handleRegistration = (event) => {
 
 
 
+const handleResetPassword = (event) => {
+        event.preventDefault();
+
+        const email = getValue("resetEmail");
+
+        fetch("http://127.0.0.1:8000/user/reset/", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email: email }),
+        })
+                .then((res) => res.json())
+                .then((data) => {
+                        console.log(data);
+
+                        window.location.href = "resetEmailCheck.html";  // Redirect to the confirmation page
+                })
+                .catch((error) => {
+                        document.getElementById("error").innerText = "Sorry, can't send reset email";
+                });
+};
+
+
+
+const handlaResetPasswordForm = (event) => {
+        event.preventDefault();
+        const urlParams = new URLSearchParams(window.location.search);
+        const uidb64 = urlParams.get('uid');
+        const token = urlParams.get('token');
+        const password = getValue("new-password");
+        const confirm_password = getValue("confirm-password");
+
+        const info = {
+                urlParams,
+                uidb64,
+                token,
+                password,
+                confirm_password,
+        };
+
+        if (password === confirm_password) {
+
+                if (
+                        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(
+                                password
+                        )
+                ){
+                        console.log(info);
+
+                        fetch(``)
+                }
+
+        }
+
+}
+
 
 const handleLogin = (event) => {
         event.preventDefault();
         const username = getValue("login-username");
         const password = getValue("login-password");
-        // console.log(username, password);
         if ((username, password)) {
 
                 // http://127.0.0.1:8000/user/login/
@@ -86,17 +140,11 @@ const handleLogin = (event) => {
                                         localStorage.setItem("token", data.token);
                                         localStorage.setItem("user_id", data.user_id);
                                         localStorage.setItem("role", data.role);
-
-                                        console.log(token);
-                                        console.log(user_id);
-                                        console.log(role);
                                         window.location.href = "index.html";
                                 }
                         });
         }
 };
-
-
 
 
 
@@ -123,8 +171,6 @@ const handleLogout = () => {
                 });
 
 };
-
-
 
 
 
@@ -165,7 +211,6 @@ const userDetails = () => {
 };
 
 userDetails();
-
 
 
 // If user is student it will display student information
@@ -232,9 +277,6 @@ const instructorDetails = () => {
                                 div.innerHTML = `
                     <div class="userNameContainer">
         
-                    <div  class="userName">
-                    <h1>User Id: <span>${data.id}</span></h1>
-                    </div>
         
                     <div class="userName">
                     <h1>User Name: <span>${data.username}</span></h1>
@@ -254,7 +296,7 @@ const instructorDetails = () => {
 
                     <h1>This is instructor details</h1>
 
-                      <a href="addCourse.html">Course Add</a>
+                      <a class="courseBtn" href="addCourse.html">Course Add</a>
                    
                     </div>
                     `;
@@ -296,56 +338,74 @@ const handleContact = (event) => {
 
 // Add course
 
-// const addCourse = (event) => {
-//         event.preventDefault();
-//         const userId = localStorage.getItem("user_id");
-//         const Token = localStorage.getItem("token");
-//         const title = document.getElementById("title").value;
-//         const description = document.getElementById("description").value;
-//         const price = document.getElementById("price").value;
-//         const image = document.getElementById("image").value;
-//         if (userId) {
-//                 fetch(`http://127.0.0.1:8000/instructor/list/${userId}`)
-//                         .then((res) => res.json())
-//                         .then((data) => {
-//                                 console.log(data);
-//                         //         if (data.is_admin && data.role === 'INSTRUCTOR') {
+    
+const addCourse = (event) => {
+        event.preventDefault();
+        const user_id = localStorage.getItem("user_id");
+        const token = localStorage.getItem("token");
+        const title = document.getElementById("title").value;
+        const description = document.getElementById("description").value;
+        const price = document.getElementById("price").value;
+        const image = document.getElementById("image").files[0]; // Get the file object
+    
+        if (user_id) {
+            fetch(`http://127.0.0.1:8000/user/list/${user_id}`, {
+                headers: {
+                    Authorization: `Token ${token}`,
+                    "Content-Type": "application/json",
+                },
+            })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.is_admin) {
+                    const formData = new FormData();
+                    formData.append("account", user_id);
+                    formData.append("title", title);
+                    formData.append("description", description);
+                    formData.append("price", price);
+                    formData.append("image", image);
+    
+                    console.log("Request payload:", formData);
+    
+                    fetch(`http://127.0.0.1:8000/user/create/`, {
+                        method: "POST",
+                        headers: {
+                            Authorization: `Token ${token}`,
+                            // "Content-Type": "application/json", // Note: Do not set Content-Type for FormData
+                        },
+                        body: formData,
+                    })
+                    .then((res) => {
+                        if (res.ok) {
+                        //     alert("Course added successfully!");
+                            window.location.href = "plan.html";
+                        } else {
+                            return res.json().then((data) => {
+                                console.log("Server response:", data);
+                                alert("Failed to add course. Check console for details.");
+                            });
+                        }
+                    })
+                    .catch((error) => {
+                        console.error("Error:", error);
+                        alert("An error occurred.");
+                    });
+                } else {
+                    alert("User is not an admin.");
+                }
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                alert("An error occurred while fetching user details.");
+            });
+        } else {
+            alert("User ID not found.");
+        }
+    };
 
-//                         //                 const formData = new FormData();
-//                         //                 formData.append('instructor', data.username);
-//                         //                 formData.append('title', title);
-//                         //                 formData.append('description', description);
-//                         //                 formData.append('price', price);
-//                         //                 if (image) {
-//                         //                         formData.append('image', image);
-//                         //                 }
 
-//                         //                 fetch('http://127.0.0.1:8000/instructor/create/', {
-//                         //                         method: 'POST',
-//                         //                         headers: {
-//                         //                                 Authorization: `Token ${Token}`,
-//                         //                                 // 'Content-Type': 'application/json', // Do not set this header when using FormData
-//                         //                         },
-//                         //                         body: formData,
-//                         //                 })
-//                         //                         .then((res) => {
-//                         //                                 if (res.ok) {
-//                         //                                         alert("Course added successfully");
-//                         //                                 } else {
-//                         //                                         res.json().then(data => {
-//                         //                                                 alert("Failed to add course: " + JSON.stringify(data));
-//                         //                                         });
-//                         //                                 }
-//                         //                         })
-//                         //                         .catch((error) => {
-//                         //                                 console.error('Error:', error);
-//                         //                                 alert('Failed to add course');
-//                         //                         });
 
-//                         //         }
 
-//                          })
-//         }
 
-// };  
 
+    

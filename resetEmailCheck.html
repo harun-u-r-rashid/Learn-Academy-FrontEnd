@@ -23,87 +23,80 @@
 
         <!-- fontaewesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+
+        <style>
+           
+                .checkSection {
+                        width: 90%;
+                        max-width: 600px;
+                        background-color: #fff;
+                        padding: 20px;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                        border-radius: 8px;
+                        text-align: center;
+                        margin: 100px auto;
+                }
+
+                .iconEmailCheck {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 20px;
+
+                }
+
+                #icon {
+                        align-self: flex-start;
+                }
+
+                #arrow {
+                        font-size: 24px;
+                        color: #333;
+                        transition: color 0.3s;
+                }
+
+                #arrow:hover {
+                        color: #007bff;
+                }
+
+
+                .emailCheck h3 {
+                        font-size: 24px;
+                        color: #333;
+                        margin-bottom: 10px;
+                }
+
+                .emailCheck p {
+                        font-size: 18px;
+                        color: #666;
+                        line-height: 1.6;
+                }
+
+
+                @media (max-width: 600px) {
+                        section {
+                                padding: 15px;
+                        }
+
+                        .emailCheck h3 {
+                                font-size: 22px;
+                        }
+
+                        .emailCheck p {
+                                font-size: 16px;
+                        }
+
+                        #arrow {
+                                font-size: 20px;
+                        }
+                }
+        </style>
 </head>
 
-<style>
-        .addCourseSection {
-                max-width: 600px;
-                margin: 20px auto;
-                padding: 20px;
-                border: 1px solid #ddd;
-                border-radius: 8px;
-                background-color: #fff;
-                box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        }
-
-
-        #course-form {
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-        }
-
-
-        #course-form input[type="text"],
-        #course-form input[type="number"],
-        #course-form input[type="file"],
-        #course-form textarea {
-                width: 100%;
-                padding: 10px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-                font-size: 16px;
-        }
-
-        #course-form input::placeholder,
-        #course-form textarea::placeholder {
-                color: #aaa;
-        }
-
-
-        #course-form textarea {
-                resize: vertical;
-                min-height: 100px;
-        }
-
-
-        #course-form button {
-                padding: 10px 15px;
-                border: none;
-                border-radius: 5px;
-                background-color: #28a745;
-                color: #fff;
-                font-size: 18px;
-                cursor: pointer;
-                transition: background-color 0.3s;
-        }
-
-        #course-form button:hover {
-                background-color: #218838;
-        }
-
-
-        @media (max-width: 600px) {
-                .addCourseSection {
-                        padding: 15px;
-                }
-
-                #course-form input[type="text"],
-                #course-form input[type="number"],
-                #course-form input[type="file"],
-                #course-form textarea {
-                        padding: 8px;
-                        font-size: 14px;
-                }
-
-                #course-form button {
-                        padding: 8px 12px;
-                        font-size: 16px;
-                }
-        }
-</style>
-
 <body>
+
 
         <nav class="bg-white border-gray-200 dark:bg-gray-900">
                 <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -118,8 +111,9 @@
                                         id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                                         data-dropdown-placement="bottom">
                                         <span class="sr-only">Open user menu</span>
-
-                                        <img class="w-8 h-8 rounded-full" src="" alt="">
+                                      
+                                        <img class="w-8 h-8 rounded-full"
+                                                src="" alt="">
                                 </button>
                                 <!-- Dropdown menu -->
                                 <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
@@ -200,34 +194,65 @@
         </nav>
 
 
-        <section class="addCourseSection">
-                <form id="course-form" enctype="multipart/form-data">
-                        <input type="text" id="title" name="title" placeholder="Course Title" required><br>
-                        <textarea id="description" name="description" placeholder="Course Description"
-                                required></textarea><br>
-                        <input type="number" id="price" name="price" placeholder="Course Price" required><br>
-                        <input type="file" id="image" name="image"><br>
-                        <button onclick="addCourse(event)" type="submit">Create Course</button>
-                </form>
-        </section>
+        <main>
+                <section class="checkSection">
 
+                        <div class="iconEmailCheck">
 
+                                <div id="icon">
+                                        <a href="index.html"><i id="arrow" class="fa-solid fa-arrow-left"></i></i></a>
+                                </div>
 
+                                <div class="emailCheck">
+                                        <h3>Reset password</h3>
+                                        <p>
+                                                Please check your email and click to the given link to reset your password
+                                        </p>
+                                </div>
+
+                        </div>
+
+                </section>
+        </main>
+
+        <footer>
+                <div class="footerContainer">
+
+                        <div class="links">
+                                <h3>Important Link</h3>
+
+                                <a href="index.html">Home</a>
+                                <a href="#">Features</a>
+                                <a href="#">Pricing</a>
+                                <a href="#">About</a>
+
+                        </div>
+
+                        <div class="socialIcons">
+
+                                <h3>Stay touch via social media</h3>
+                                <i class="fa-brands fa-facebook"></i>
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <i class="fa-brands fa-linkedin"></i>
+                                <i class="fa-brands fa-github"></i>
+
+                        </div>
+
+                </div>
+                <hr>
+
+                <h3> copyright || &copy Harunur Rashid</h3>
+        </footer>
 
 
         <!-- tailwind -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-
         <!-- passive -->
         <script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>
 
         <!-- Internal js -->
         <script src="js/app.js"></script>
         <script src="js/auth.js"></script>
-
-
-
-
 </body>
 
 </html>

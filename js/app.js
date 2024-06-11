@@ -1,4 +1,4 @@
-
+// https://learn-academy.onrender.com/
 
 const loadInstructor = (search) => {
         document.getElementById("instructors").innerHTML = "";
@@ -37,9 +37,8 @@ loadInstructor();
 
 
 const loadCourse = (search) => {
-        document.getElementById("planningContainer").innerHTML = "";
-        // http://127.0.0.1:8000/instructor/course/list/
-        fetch(`http://127.0.0.1:8000/instructor/course/list/?search=${search ? search : ""
+        // http://127.0.0.1:8000/user/course/list/
+        fetch(`http://127.0.0.1:8000/user/course/list/?search=${search ? search : ""
                 }`)
                 .then((res) => res.json())
                 .then((data) => {
@@ -50,6 +49,7 @@ const loadCourse = (search) => {
 
 const displayCourse = (courses) => {
         courses.forEach((course) => {
+
                 const parent = document.getElementById("planningContainer");
                 const div = document.createElement("div");
                 div.classList.add("planCard")
@@ -60,6 +60,7 @@ const displayCourse = (courses) => {
                 </div>
                 <div class="planDetails">
                         <h2>${course.title}</h2>
+
                         <p>
                         ${course.description}
                         </p>
@@ -70,6 +71,8 @@ const displayCourse = (courses) => {
                         </h1>
 
                         <a href="">Enroll</a>
+
+                        <button onclick="removeCourse(${course.id})">Remove</button>
                 </div>
              
                 `;
@@ -82,7 +85,6 @@ loadCourse();
 
 
 // Contact Show
-
 const loadContact = () => {
         // http://127.0.0.1:8000/user/contact/list/
         fetch(`http://127.0.0.1:8000/user/contact/list/
@@ -95,18 +97,66 @@ const loadContact = () => {
 
 };
 
-const displayContact = (contacts) => {
-        contacts.forEach((contact) => {
-                const parent = document.getElementById("contactShow");
-                const div = document.createElement("div");
-                div.classList.add("contact")
 
-                div.innerHTML = `
-                      <h1>HI</h1>       
-                `;
-                parent.appendChild(div);
-        });
+
+// const displayContact = (contacts) => {
+//         contacts.forEach((contact) => {
+//                 const parent = document.getElementById("contactShow");
+//                 const div = document.createElement("div");
+//                 div.classList.add("contact")
+
+//                 div.innerHTML = `
+//                       <h1>HI</h1>       
+//                 `;
+//                 parent.appendChild(div);
+//         });
+// };
+
+// loadContact();
+
+
+
+const removeCourse = (courseId) => {
+
+        // console.log(courseId);
+
+        const user_id = localStorage.getItem("user_id");
+        const token = localStorage.getItem("token");
+
+        if (user_id) {
+                fetch(`http://127.0.0.1:8000/user/list/${user_id}`, {
+                        headers: {
+                                Authorization: `Token ${token}`,
+                                "Content-Type": "application/json",
+                        },
+                })
+                        .then((res) => res.json())
+                        .then((data) => {
+                                if (data.is_admin) {
+
+                                        fetch(`http://127.0.0.1:8000/user/${courseId}/delete/`,{
+                                                method:'DELETE'
+                                        })
+
+                                        .then((res)=>{
+                                                // console.log(res);
+                                                if(res.ok){
+                                                        window.location.href = "plan.html";
+                                                }
+                                                else{
+                                                        alert("Failed to delete course");
+                                                }
+                                        })
+                                }
+
+                                else{
+                                        alert("Only admin can delete course")
+                                }
+                        })
+        }
+
+        else{
+                alert("Please login!")
+                window.location.href = "login.html";
+        }
 };
-
-loadContact();
-
