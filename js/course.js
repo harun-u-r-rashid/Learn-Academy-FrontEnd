@@ -1,61 +1,7 @@
 
-// const loadCourse = (search) => {
-//         // http://127.0.0.1:8000/user/course/list/
-//         fetch(`http://127.0.0.1:8000/user/course/list/?search=${search ? search : ""
-//                 }`)
-//                 .then((res) => res.json())
-//                 .then((data) => {
-//                         displayCourse(data);
-//                 })
-
-// };
-
-// const displayCourse = (courses) => {
-//         courses.forEach((course) => {
-
-
-
-//                 const parent = document.getElementById("planningContainer");
-//                 const div = document.createElement("div");
-//                 div.classList.add("planCard")
-
-//                 div.innerHTML = `
-//                 <div class="image">
-//                         <img src="${course.image}" alt="">
-//                 </div>
-//                 <div class="planDetails">
-//                         <h2>${course.title}</h2>
-
-//                         <p>
-//                         ${course.description}
-//                         </p>
-//                         <h1>
-
-//                         ${course.price} Tk.<sub>(life time)</sub>
-
-//                         </h1>
-
-//                         <a href="">Enroll</a>
-
-//                         <button id="removeBtn" onclick="removeCourse(${course.id})">Remove</button>
-
-//                          <a href="updateCourse.html?courseId=${course.id}">Update</a> <!-- Pass courseId here -->
-
-
-//                 </div>
-
-//                 `;
-//                 parent.appendChild(div);
-
-//         });
-// };
-
-// loadCourse();
-
-
 
 const loadCourse = (search) => {
-        fetch(`https://learn-academy.onrender.com/user/course/list/?search=${search ? search : ""}`)
+        fetch(`http://127.0.0.1:8000/user/course/list/?search=${search ? search : ""}`)
                 .then((res) => res.json())
                 .then((data) => {
                         displayCourse(data);
@@ -68,6 +14,9 @@ const displayCourse = (courses) => {
 
         const user_id = localStorage.getItem("user_id");
         const token = localStorage.getItem("token");
+        console.log(user_id, token);
+        
+    
 
         if (user_id) {
                 fetch(`https://learn-academy.onrender.com/user/list/${user_id}`, {
@@ -78,9 +27,10 @@ const displayCourse = (courses) => {
                 })
                         .then((res) => res.json())
                         .then((data) => {
+                                console.log(data);
                                 const isAdmin = data.is_admin;
-
-
+                                const isSuperAdmin = data.is_superadmin;
+                                
                                 courses.forEach((course) => {
                                         const parent = document.getElementById("planningContainer");
                                         const div = document.createElement("div");

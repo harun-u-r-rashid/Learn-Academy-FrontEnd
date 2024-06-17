@@ -90,36 +90,59 @@
                 color: black;
         }
 
+
+
+        #emailContainer h3 {
+                animation-duration: 3s;
+                animation-name: slidein;
+                text-align: center;
+                margin: 20px;
+                text-transform: uppercase;
+                font-weight: bold;
+                color: rgb(92, 88, 82);
+        }
+
+        @keyframes slidein {
+                from {
+                        translate: 150vw 0;
+                        scale: 200% 1;
+                }
+
+                to {
+                        translate: 0 0;
+                        scale: 100% 1;
+                }
+        }
+
         @media only screen and (max-width: 460px) {
 
                 .detailsContainer {
-                padding: 10px 0;
-                margin: auto;
-                display: flex;
-                flex-direction: column;
+                        padding: 10px 0;
+                        margin: auto;
+                        display: flex;
+                        flex-direction: column;
+
+                }
+
+                .detailsContainer h1 {
+                        font-size: 12px;
+                        font-weight: 550;
+                }
+
+                .detailsContainer span {
+                        font-size: 13px;
+                        font-weight: 600;
+                }
+
+                .courseBtn {
+                        width: 80px;
+                        font-size: 10px;
+                        font-weight: bold;
+                        text-align: center;
+                        text-transform: uppercase;
+                }
 
         }
-        .detailsContainer h1 {
-                font-size: 12px;
-                font-weight: 550;
-        }
-
-        .detailsContainer span {
-                font-size: 13px;
-                font-weight: 600;
-        }
-
-        .courseBtn {
-               width: 80px;
-                font-size: 10px;
-                font-weight: bold;
-                text-align: center;
-                text-transform: uppercase;
-        }
-
-}
-
-
 </style>
 
 <body>
@@ -222,7 +245,38 @@
         <section class="dashBoardSection">
                 <div id="dashUserDetails">
 
+
+
                 </div>
+
+
+                <div id="emailContainer" class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                        <h3>Query from your guests and users</h3>
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <thead
+                                        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                        <tr>
+                                                <th scope="col" class="px-6 py-3">
+                                                        Name
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                        Email
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                        Query
+                                                </th>
+
+                                        </tr>
+                                </thead>
+                                <tbody id="showEmail">
+
+
+                                </tbody>
+                        </table>
+                </div>
+
+
+
         </section>
 
 
@@ -242,7 +296,7 @@
         <script src="js/app.js"></script>
         <script src="js/auth.js"></script>
         <script src="js/course.js"></script>
-        <script src="js/dom.js"></script>
+        <script src="js/contact.js"></script>
 </body>
 
 </html>
